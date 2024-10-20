@@ -1,0 +1,34 @@
+[
+  {
+    "ContainingType": "Gateway.Incoming.Http.CustomerController",
+    "Method": "GetCustomer",
+    "RelativePath": "api/v1/Customer/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [],
+    "Tags": [
+      "Customer"
+    ]
+  },
+  {
+    "ContainingType": "Gateway.Incoming.Http.CustomerController",
+    "Method": "GetLogs",
+    "RelativePath": "api/v1/Logs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [],
+    "Tags": [
+      "Customer"
+    ]
+  }
+]
