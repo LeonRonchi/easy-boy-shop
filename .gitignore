@@ -10,3 +10,15 @@
 /API-Product/.vs
 /API-Seller/.vs
 /API-Stock/.vs
+/API-Customer/API-Customer/bin/Debug/net8.0
+/API-Customer/API-Customer/obj/Debug/net8.0
+/API-Customer/Application/bin/Debug/net8.0
+/API-Customer/Application/obj/Debug/net8.0
+/API-Customer/Domain/bin/Debug/net8.0
+/API-Customer/Domain/obj/Debug/net8.0
+/API-Customer/Incoming/bin/Debug/net8.0
+/API-Customer/Incoming/obj/Debug/net8.0
+/API-Customer/Infrastructure/bin/Debug/net8.0
+/API-Customer/Infrastructure/obj/Debug/net8.0
+/API-Customer/Outgoing/bin/Debug/net8.0
+/API-Customer/Outgoing/obj/Debug/net8.0
