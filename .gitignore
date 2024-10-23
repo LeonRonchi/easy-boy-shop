@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/API-Category/.vs
+/API-Checkout/.vs
+/API-Customer/.vs
+/API-Notification/.vs
+/API-Payment/.vs
+/API-Product/.vs
+/API-Seller/.vs
+/API-Stock/.vs
