@@ -65,12 +65,7 @@ public class Program
         // Adapters
         builder.Services.AddSingleton<ILogAdapter, LogAdapter>();
 
-    }
-
-    private static void RegistryDomainServices(WebApplicationBuilder builder)
-    {
-        //builder.Services.AddSingleton<IGetMenuItems, GetMenuItems>();
-    }
+    }   
 
     private static void RegistryApplicationServices(WebApplicationBuilder builder)
     {

@@ -2,7 +2,7 @@
   {
     "ContainingType": "Gateway.Incoming.Http.CustomerController",
     "Method": "GetCustomer",
-    "RelativePath": "api/v1/Customer/{id}",
+    "RelativePath": "api-gateway/v1/customer/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -21,7 +21,7 @@
   {
     "ContainingType": "Gateway.Incoming.Http.CustomerController",
     "Method": "GetLogs",
-    "RelativePath": "api/v1/Logs",
+    "RelativePath": "api/v1/logs",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

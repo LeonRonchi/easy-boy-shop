@@ -19,7 +19,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/v1/Customer/{id}")]
+    [Route("/api-gateway/v1/customer/{id}")]
     public async Task<IActionResult> GetCustomer([FromRoute] string id)
     {
         LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
@@ -51,7 +51,7 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/api/v1/Logs")]
+    [Route("/api/v1/logs")]
     public async Task<IActionResult> GetLogs()
     {
         try

@@ -6,7 +6,7 @@ namespace Gateway.Application.Mappings;
 
 public class LogMapper : ILogMapper
 {
-    public Log FromLogRequest(LogRequest LogResponse) => new Log(
+    public Log FromLogRequest(LogRequest LogResponse) => new(
         null,
         LogResponse.ClientIP,
         LogResponse.Method,
