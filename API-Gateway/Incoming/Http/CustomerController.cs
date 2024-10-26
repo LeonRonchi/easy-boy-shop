@@ -1,68 +1,129 @@
-﻿using Gateway.Application.DTO.Log;
-using Gateway.Application.Interfaces;
+﻿using Application.Client;
+using Application.DTO.Customer.Request;
+using Application.DTO.Log;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Gateway.Incoming.Http;
+namespace Incoming.Http;
 
 [ApiController]
 [Tags("Customer")]
+[Route("/api-gateway/v1/customer")]
 public class CustomerController : ControllerBase
 {
 
     private readonly ILogServices _logService;
+    private readonly ICustomerClient _customerClient;
 
-    public CustomerController(ILogServices logService)
+    public CustomerController(ILogServices logService, ICustomerClient customerClient)
     {
         _logService = logService;
+        _customerClient = customerClient;
     }
 
-    [HttpGet]
-    [Route("/api-gateway/v1/customer/{id}")]
-    public async Task<IActionResult> GetCustomer([FromRoute] string id)
+    [HttpPost]
+    [ProducesResponseType(typeof(CustomerRequest), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Create([FromBody] CustomerRequest request)
     {
-        LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
-           $"{{\"Method\": \"{HttpContext.Request.Method}\", \"Path\": \"{HttpContext.Request.Path}\"}}");
+        //LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
+        //   $"{{\"Method\": \"{HttpContext.Request.Method}\", \"Path\": \"{HttpContext.Request.Path}\"}}");
 
-        try
-        {
-            var account = new
-            {
-                Id = "1899992",
-                Name = "Joao Santos",
-                Email = "joao@teste.com"
-            };
+        //try
+        //{
+        var response = await _customerClient.CreateCustomerAsync(request);
+        return Ok(response);
+        //}
+        //catch (Exception ex)
+        //{
+        //    logRequest.StatusCode = ex;
 
-            logRequest.StatusCode = HttpStatusCode.OK.ToString();
+        //    return BadRequest(ex);
+        //}
+        //finally
+        //{
+        //    await _logService.Create(logRequest);
+        //}
+    }    
 
-            return Ok(account);
-        }
-        catch (Exception ex)
-        {
-            logRequest.StatusCode = HttpStatusCode.BadRequest.ToString();
-
-            return BadRequest(ex);
-        }
-        finally
-        {
-            await _logService.Create(logRequest);
-        }
-    }
-
-    [HttpGet]
-    [Route("/api/v1/logs")]
-    public async Task<IActionResult> GetLogs()
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(CustomerRequest), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetCustomer([FromRoute] Guid id)
     {
-        try
-        {
-            var request = await _logService.GetLogs();
+        //LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
+        //   $"{{\"Method\": \"{HttpContext.Request.Method}\", \"Path\": \"{HttpContext.Request.Path}\"}}");
 
-            return Ok(request);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex);
-        }
+        //try
+        //{
+            var request = new CustomerRequest { Id = id };
+            var response = await _customerClient.GetCustomerByIdAsync(request);
+            return Ok(response);
+        //}
+        //catch (Exception ex)
+        //{
+        //    logRequest.StatusCode = ex;
+
+        //    return BadRequest(ex);
+        //}
+        //finally
+        //{
+        //    await _logService.Create(logRequest);
+        //}
     }
+
+    [HttpGet("all")]
+    [ProducesResponseType(typeof(CustomerRequest), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetCustomers()
+    {
+        //LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
+        //   $"{{\"Method\": \"{HttpContext.Request.Method}\", \"Path\": \"{HttpContext.Request.Path}\"}}");
+
+        //try
+        //{
+        var response = await _customerClient.GetCustomerAllAsync();
+        return Ok(response);
+        //}
+        //catch (Exception ex)
+        //{
+        //    logRequest.StatusCode = ex;
+
+        //    return BadRequest(ex);
+        //}
+        //finally
+        //{
+        //    await _logService.Create(logRequest);
+        //}
+    }
+
+    [HttpPut]
+    [ProducesResponseType(typeof(CustomerRequest), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update([FromBody] CustomerRequest request)
+    {
+        //LogRequest logRequest = new(HttpContext.Connection.RemoteIpAddress?.ToString(),
+        //   $"{{\"Method\": \"{HttpContext.Request.Method}\", \"Path\": \"{HttpContext.Request.Path}\"}}");
+
+        //try
+        //{
+        var response = await _customerClient.CreateCustomerAsync(request);
+        return Ok(response);
+        //}
+        //catch (Exception ex)
+        //{
+        //    logRequest.StatusCode = ex;
+
+        //    return BadRequest(ex);
+        //}
+        //finally
+        //{
+        //    await _logService.Create(logRequest);
+        //}
+    }
+
+
+
 }

@@ -1,14 +1,20 @@
-using Gateway.Adapter.Interfaces;
-using Gateway.Application.Interfaces;
-using Gateway.Application.Mappings;
-using Gateway.Application.Services;
-using Gateway.Domain.Interfaces;
-using Gateway.Infrastructure.Interfaces;
-using Gateway.Infrastructure.Repository.Scylla;
+using Application.Client;
+using Adapter.Interfaces;
+using Application.Interfaces;
+using Application.Mappings;
+using Application.Services;
+using Domain.Interfaces;
+using Infrastructure.Interfaces;
+using Infrastructure.Repository.Scylla;
 using Infrastructure.Configuration;
 using Infrastructure.Repository;
 using Microsoft.AspNetCore.Http.Json;
+using Outgoing.Http;
+using Outgoing.Http.Refit;
+using Refit;
 using System.Text.Json.Serialization;
+using Application.Interface;
+using Application.Mapper;
 
 public class Program
 {
@@ -20,6 +26,7 @@ public class Program
         RegistryInfrastructureServices(builder);
         RegistryApplicationServices(builder);
         RegistryIncomingServices(builder);
+        RegistryOutgoingServices(builder);
 
         builder.Services.AddHttpClient();
 
@@ -41,6 +48,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.UseMiddleware<ExceptionHandler>();
 
         app.UseHttpsRedirection();
 
@@ -71,6 +80,7 @@ public class Program
     {
         // Mappers
         builder.Services.AddSingleton<ILogMapper, LogMapper>();
+        builder.Services.AddSingleton<ICustomerMapper, CustomerMapper>();
 
         // Services
         builder.Services.AddSingleton<ILogServices, LogServices>();
@@ -80,14 +90,29 @@ public class Program
     {
         // CORS - Angular: localhost:4200
         #if DEBUG
-        builder.Services.AddCors(options =>
-                {
-                    options.AddPolicy("AllowLocalhost4200",
-                        policy => policy.WithOrigins("http://localhost:4200")
-                                        .AllowAnyMethod());
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalhost4200",
+                    policy => policy.WithOrigins("http://localhost:4200")
+                                    .AllowAnyMethod());
 
-                });
+            });
         #endif
+    }
+
+    private static void RegistryOutgoingServices(WebApplicationBuilder builder)
+    {
+        // Refit
+        builder.Services.AddRefitClient<ICustomerRefitClient>()
+            .ConfigureHttpClient((sp, c) =>
+             {
+                 var config = sp.GetRequiredService<IConfiguration>();
+                 c.BaseAddress = new Uri(config["Customer:BaseUrl"]);
+             });
+
+        // Client
+        builder.Services.AddScoped<ICustomerClient, CustomerClient>();
+
     }
 }
 

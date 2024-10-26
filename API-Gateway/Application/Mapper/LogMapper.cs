@@ -1,8 +1,8 @@
-﻿using Gateway.Application.DTO.Log;
-using Gateway.Application.Interfaces;
-using Gateway.Domain.Entities;
+﻿using Application.DTO.Log;
+using Application.Interfaces;
+using Domain.Entities;
 
-namespace Gateway.Application.Mappings;
+namespace Application.Mappings;
 
 public class LogMapper : ILogMapper
 {

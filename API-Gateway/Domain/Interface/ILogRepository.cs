@@ -1,6 +1,6 @@
-﻿using Gateway.Domain.Entities;
+﻿using Domain.Entities;
 
-namespace Gateway.Domain.Interfaces;
+namespace Domain.Interfaces;
 
 public interface ILogRepository
 {

@@ -51,3 +51,5 @@ C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\
 C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\net8.0\Refit.dll
 C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\net8.0\Refit.HttpClientFactory.dll
 C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\net8.0\StackExchange.Redis.dll
+C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\net8.0\Outgoing.dll
+C:\Users\irine\Documents\GitHub\easy-boy-shop\API-Gateway\API-Gateway\bin\Debug\net8.0\Outgoing.pdb

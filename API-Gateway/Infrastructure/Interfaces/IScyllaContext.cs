@@ -1,6 +1,6 @@
 ﻿using Cassandra;
 
-namespace Gateway.Infrastructure.Interfaces;
+namespace Infrastructure.Interfaces;
 
 public interface IScyllaContext
 {

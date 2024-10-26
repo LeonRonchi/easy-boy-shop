@@ -9,6 +9,7 @@ using Infrastructure.Interfaces;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Scylla;
 using Microsoft.AspNetCore.Http.Json;
+using Refit;
 using System.Text.Json.Serialization;
 
 public class Program
@@ -16,11 +17,14 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
 
         // register services
         RegistryInfrastructureServices(builder);
         RegistryApplicationServices(builder);
         RegistryIncomingServices(builder);
+        RegistryOutgoingServices(builder);
 
         builder.Services.AddHttpClient();
 
@@ -42,6 +46,8 @@ public class Program
             app.UseSwagger();
             app.UseSwaggerUI();
         }
+
+        app.UseMiddleware<ExceptionHandler>();
 
         app.UseHttpsRedirection();
 
@@ -89,6 +95,11 @@ public class Program
 
         });
         #endif
+    }
+
+    private static void RegistryOutgoingServices(WebApplicationBuilder builder)
+    {
+        
     }
 }
 

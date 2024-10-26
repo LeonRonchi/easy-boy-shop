@@ -1,8 +1,8 @@
 ﻿using Cassandra;
-using Gateway.Infrastructure.Interfaces;
-using Gateway.Infrastructure.Repository.Entity;
+using Infrastructure.Interfaces;
+using Infrastructure.Repository.Entity;
 
-namespace Gateway.Infrastructure.Repository.Scylla;
+namespace Infrastructure.Repository.Scylla;
 
 public class LogScyllaRepository : ILogScyllaRepository
 {

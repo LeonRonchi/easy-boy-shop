@@ -1,6 +1,82 @@
 [
   {
-    "ContainingType": "Gateway.Incoming.Http.CustomerController",
+    "ContainingType": "Incoming.Http.CustomerController",
+    "Method": "Create",
+    "RelativePath": "api-gateway/v1/customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Customer"
+    ]
+  },
+  {
+    "ContainingType": "Incoming.Http.CustomerController",
+    "Method": "Update",
+    "RelativePath": "api-gateway/v1/customer",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Customer"
+    ]
+  },
+  {
+    "ContainingType": "Incoming.Http.CustomerController",
     "Method": "GetCustomer",
     "RelativePath": "api-gateway/v1/customer/{id}",
     "HttpMethod": "GET",
@@ -9,26 +85,77 @@
     "Parameters": [
       {
         "Name": "id",
-        "Type": "System.String",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
     "Tags": [
       "Customer"
     ]
   },
   {
-    "ContainingType": "Gateway.Incoming.Http.CustomerController",
+    "ContainingType": "Incoming.Http.CustomerController",
+    "Method": "GetCustomers",
+    "RelativePath": "api-gateway/v1/customer/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Application.DTO.Customer.Request.CustomerRequest",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Customer"
+    ]
+  },
+  {
+    "ContainingType": "Incoming.Http.LogController",
     "Method": "GetLogs",
-    "RelativePath": "api/v1/logs",
+    "RelativePath": "api-gateway/v1/log/all",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [],
     "Tags": [
-      "Customer"
+      "Log"
     ]
   }
 ]

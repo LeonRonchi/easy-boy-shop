@@ -1,4 +1,4 @@
-﻿namespace Gateway.Domain.Entities;
+﻿namespace Domain.Entities;
 
 public abstract class Entity
 {

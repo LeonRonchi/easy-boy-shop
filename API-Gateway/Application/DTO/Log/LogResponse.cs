@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Gateway.Application.DTO.Log;
+namespace Application.DTO.Log;
 
 public class LogResponse
 {

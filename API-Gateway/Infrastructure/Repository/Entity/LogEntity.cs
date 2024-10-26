@@ -1,4 +1,4 @@
-﻿namespace Gateway.Infrastructure.Repository.Entity;
+﻿namespace Infrastructure.Repository.Entity;
 
 public class LogEntity
 {

@@ -1,6 +1,6 @@
-﻿using Gateway.Domain.Entities;
-using Gateway.Domain.Interfaces;
-using Gateway.Infrastructure.Interfaces;
+﻿using Domain.Entities;
+using Domain.Interfaces;
+using Infrastructure.Interfaces;
 using System.Net.NetworkInformation;
 
 namespace Infrastructure.Repository;

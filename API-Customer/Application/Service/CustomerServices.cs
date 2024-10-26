@@ -1,7 +1,7 @@
 ﻿using Application.DTO;
 using Application.Interface;
 using Domain.Interface;
-using Domain.Validation;
+using Domain.Exception;
 
 namespace Application.Service;
 

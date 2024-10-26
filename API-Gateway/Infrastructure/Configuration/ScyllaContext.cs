@@ -1,5 +1,5 @@
 ﻿using Cassandra;
-using Gateway.Infrastructure.Interfaces;
+using Infrastructure.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace Infrastructure.Configuration;

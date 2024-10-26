@@ -1,8 +1,8 @@
-﻿using Gateway.Domain.Entities;
-using Gateway.Infrastructure.Interfaces;
-using Gateway.Infrastructure.Repository.Entity;
+﻿using Domain.Entities;
+using Infrastructure.Interfaces;
+using Infrastructure.Repository.Entity;
 
-namespace Gateway.Adapter.Interfaces;
+namespace Adapter.Interfaces;
 
 public class LogAdapter : ILogAdapter
 {

@@ -1,6 +1,6 @@
-﻿using Gateway.Domain.Validation;
+﻿using Domain.Validation;
 
-namespace Gateway.Domain.Entities;
+namespace Domain.Entities;
 
 public sealed class Log : Entity
 {

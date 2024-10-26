@@ -1,14 +1,13 @@
 ﻿using Application.DTO;
 using Application.Interface;
-using Domain.Validation;
+using Domain.Exception;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace Incoming.Http;
 
 [ApiController]
+[Route("/api/v1/customer")]
 [Tags("Customer")]
 public class CustomerController : ControllerBase
 {
@@ -20,24 +19,19 @@ public class CustomerController : ControllerBase
     }
 
     [HttpPost]
-    [Route("/api/v1/customer")]
-    public async Task<ActionResult<CustomerResponse>> Create([FromBody] CustomerRequest request)
+    [ProducesResponseType(typeof(CustomerResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> Create([FromBody] CustomerRequest request)
     {
-        try
-        {
-            var response = await _customerService.Create(request);
-            var url = Url.Action(nameof(GetById), new { id = response.Id });
+        var response = await _customerService.Create(request);
+        var url = Url.Action(nameof(GetById), new { id = response.Id });
 
-            return Created(url, response);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex);
-        }
+        return Created(url, response);
     }
 
-    [HttpGet]
-    [Route("/api/v1/customer/{id}")]
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(CustomerResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CustomerResponse>> GetById([FromRoute] Guid id)
     {
         try
@@ -56,8 +50,9 @@ public class CustomerController : ControllerBase
         }
     }
 
-    [HttpGet]
-    [Route("/api/v1/customers")]
+    [HttpGet("all")]
+    [ProducesResponseType(typeof(CustomerResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CustomerResponse>> GetCustomers()
     {
         try

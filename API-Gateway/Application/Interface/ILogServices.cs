@@ -1,6 +1,6 @@
-﻿using Gateway.Application.DTO.Log;
+﻿using Application.DTO.Log;
 
-namespace Gateway.Application.Interfaces;
+namespace Application.Interfaces;
 
 public interface ILogServices
 {

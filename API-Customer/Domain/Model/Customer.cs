@@ -1,4 +1,4 @@
-﻿using Domain.Validation;
+﻿using Domain.Exception;
 using System.Text.RegularExpressions;
 
 namespace Domain.Model;

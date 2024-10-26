@@ -1,7 +1,7 @@
-﻿using Gateway.Domain.Entities;
-using Gateway.Application.DTO.Log;
+﻿using Domain.Entities;
+using Application.DTO.Log;
 
-namespace Gateway.Application.Interfaces;
+namespace Application.Interfaces;
 
 public interface ILogMapper
 {

@@ -1,6 +1,6 @@
-﻿using Gateway.Infrastructure.Repository.Entity;
+﻿using Infrastructure.Repository.Entity;
 
-namespace Gateway.Infrastructure.Interfaces;
+namespace Infrastructure.Interfaces;
 
 public interface ILogScyllaRepository
 {

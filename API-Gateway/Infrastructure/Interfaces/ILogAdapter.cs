@@ -1,7 +1,7 @@
-﻿using Gateway.Domain.Entities;
-using Gateway.Infrastructure.Repository.Entity;
+﻿using Domain.Entities;
+using Infrastructure.Repository.Entity;
 
-namespace Gateway.Infrastructure.Interfaces;
+namespace Infrastructure.Interfaces;
 
 public interface ILogAdapter
 {

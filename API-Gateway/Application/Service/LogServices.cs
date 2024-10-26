@@ -1,8 +1,8 @@
-﻿using Gateway.Application.DTO.Log;
-using Gateway.Application.Interfaces;
-using Gateway.Domain.Interfaces;
+﻿using Application.DTO.Log;
+using Application.Interfaces;
+using Domain.Interfaces;
 
-namespace Gateway.Application.Services;
+namespace Application.Services;
 
 public class LogServices : ILogServices
 {
