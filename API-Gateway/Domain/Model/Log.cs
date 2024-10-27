@@ -29,7 +29,7 @@ public sealed class Log : Entity
 
         // Date
         DomainExecptionValidation.When(date == DateTime.MinValue,
-              "Horário da Requesição informado");
+              "Horário da Requesição não informado");
 
         // Método
         DomainExecptionValidation.When(string.IsNullOrEmpty(method),

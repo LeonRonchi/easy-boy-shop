@@ -34,20 +34,8 @@ public class CustomerController : ControllerBase
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CustomerResponse>> GetById([FromRoute] Guid id)
     {
-        try
-        {
-            var response = await _customerService.GetCustomerById(id);
-
-            return Ok(response); 
-        }
-        catch (NotFoundException ex)
-        {
-            return NotFound(ex);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex);
-        }
+        var response = await _customerService.GetCustomerById(id);
+        return Ok(response);        
     }
 
     [HttpGet("all")]
@@ -55,24 +43,8 @@ public class CustomerController : ControllerBase
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<CustomerResponse>> GetCustomers()
     {
-        try
-        {
-            var response = await _customerService.GetCustomers();
-            
-            if (!response.Any())
-            {
-                return NotFound(response);
-            }
-
-            return Ok(response);
-        }
-        catch (NotFoundException ex)
-        {
-            return NotFound(ex);
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex);
-        }
+        var response = await _customerService.GetCustomers();
+        return Ok(response);
+       
     }
 }

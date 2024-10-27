@@ -1,4 +1,5 @@
-﻿using Domain.Interface;
+﻿using Domain.Exception;
+using Domain.Interface;
 using Domain.Model;
 using Infrastructure.Interface;
 
@@ -29,21 +30,17 @@ public class CustomerRepository : ICustomerRepository
         var storedEntity = await _customerRepository.GetByIdAsync(id);
 
         if (storedEntity == null)
-        {
-            return null;
-        }
+            return null;               
 
         return _customerAdapter.FromCustomerEntity(storedEntity);
     }
 
-    public async Task<IEnumerable<Customer>> GetCustomersAsync()
+    public async Task<IEnumerable<Customer>?> GetCustomersAsync()
     {
         var storedEntity = await _customerRepository.GetCustomers();
 
         if (storedEntity == null)
-        {
-            return Enumerable.Empty<Customer>();
-        }
+            return null;
 
         var storedCustomers = storedEntity.Select(stored => _customerAdapter.FromCustomerEntity(stored)).ToList();
 

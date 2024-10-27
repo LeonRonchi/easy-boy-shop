@@ -35,7 +35,7 @@ public class CustomerScyllaRepository : ICustomerScyllaRepository
         return ToEntity(logRow);
     }
 
-    public async  Task<IEnumerable<CustomerEntity>> GetCustomers()
+    public async  Task<IEnumerable<CustomerEntity>?> GetCustomers()
     {
         var query = @"SELECT * FROM customer";
 
@@ -43,7 +43,7 @@ public class CustomerScyllaRepository : ICustomerScyllaRepository
         var rows = await _context.GetSession().ExecuteAsync(statement);
 
         if (rows == null)
-            return Enumerable.Empty<CustomerEntity>();
+            return null;
 
         return rows.Select(row => ToEntity(row)).ToList();
     }

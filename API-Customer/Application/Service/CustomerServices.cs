@@ -26,24 +26,16 @@ public class CustomerServices : ICustomerServices
 
     public async Task<CustomerResponse> GetCustomerById(Guid id)
     {
-        var stored = await _customerRepository.GetCustomerByIdAsync(id);
-
-        if (stored == null)
-        {
-            throw new NotFoundException(string.Format($"Recurso com ID {id} não foi encontrado."));
-        }
+        var stored = await _customerRepository.GetCustomerByIdAsync(id) ??
+            throw new NotFoundException($"Cliente de ID {id} não encontrado");
 
         return _customerMapper.ToCustomerResponse(stored);
     }
 
     public async Task<IEnumerable<CustomerResponse>> GetCustomers()
     {
-        var stored = await _customerRepository.GetCustomersAsync();
-
-        if (!stored.Any())
-        {
-            return Enumerable.Empty<CustomerResponse>();
-        }
+        var stored = await _customerRepository.GetCustomersAsync() ??
+            throw new NotFoundException($"Nenhum Cliente encontrado");
 
         return stored.Select(log => _customerMapper.ToCustomerResponse(log)).ToList();
     }
